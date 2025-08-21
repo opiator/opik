@@ -9,7 +9,7 @@ RUN apk add --no-cache \
     bash \
     python3 \
     py3-pip \
-    && pip3 install docker-compose==2.29.7
+    && pip3 install --break-system-packages docker-compose==2.29.7
 
 # Install wait-for-it script for service dependencies
 RUN curl -o /usr/local/bin/wait-for-it https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh \
