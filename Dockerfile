@@ -7,9 +7,8 @@ FROM docker:25.0.1-dind AS docker-base
 RUN apk add --no-cache \
     curl \
     bash \
-    python3 \
-    py3-pip \
-    && pip3 install --break-system-packages docker-compose==2.29.7
+    && curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose \
+    && chmod +x /usr/local/bin/docker-compose
 
 # Install wait-for-it script for service dependencies
 RUN curl -o /usr/local/bin/wait-for-it https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh \
