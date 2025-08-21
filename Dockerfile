@@ -55,9 +55,7 @@ ENV REDIS_URL=redis://:opik@redis:6379/
 ENV MINIO_ROOT_USER=THAAIOSFODNN7EXAMPLE
 ENV MINIO_ROOT_PASSWORD=LESlrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-# Copy startup script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Note: Using docker-compose functionality instead of custom entrypoint
 
 # Expose ports for all services
 # Frontend
@@ -85,6 +83,5 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=60s --retries=5 \
       curl -f http://localhost:8080/health-check && \
       curl -f http://localhost:8000/healthcheck || exit 1
 
-# Start all services
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["start"]
+# Default command - use docker-compose instead
+CMD ["docker", "compose", "-f", "/opt/opik/deployment/docker-compose/docker-compose.yaml", "up"]
