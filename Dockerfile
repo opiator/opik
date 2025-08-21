@@ -60,15 +60,24 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Expose ports for all services
-EXPOSE 5173  # Frontend
-EXPOSE 8080  # Backend
-EXPOSE 3003  # OpenAPI/Swagger
-EXPOSE 8000  # Python Backend
-EXPOSE 3306  # MySQL (if using internal)
-EXPOSE 8123  # ClickHouse (if using internal)
-EXPOSE 6379  # Redis (if using internal)
-EXPOSE 9000  # MinIO (if using internal)
-EXPOSE 9090  # MinIO Console (if using internal)
+# Frontend
+EXPOSE 5173
+# Backend
+EXPOSE 8080
+# OpenAPI/Swagger
+EXPOSE 3003
+# Python Backend
+EXPOSE 8000
+# MySQL (if using internal)
+EXPOSE 3306
+# ClickHouse (if using internal)
+EXPOSE 8123
+# Redis (if using internal)
+EXPOSE 6379
+# MinIO (if using internal)
+EXPOSE 9000
+# MinIO Console (if using internal)
+EXPOSE 9090
 
 # Health check to verify all services are running
 HEALTHCHECK --interval=30s --timeout=30s --start-period=60s --retries=5 \
